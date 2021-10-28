@@ -60,3 +60,9 @@ So if we have a new validation rule request, we just need to implement the `Vali
 4. Length validation are configurable in `application.properties` file. Default value for min length is 5 and max length is 12.
 5. Unit test & Integration test in the project. When using `mvn clean install`, it will automatically running tests.
 6. Using slf4j for logs.
+
+# Test result
+![alt text](https://github.com/keyboard545/Password-Validator/blob/main/screenshot/test_result.PNG)
+
+# Time spent
+Approximately 12 hours.
