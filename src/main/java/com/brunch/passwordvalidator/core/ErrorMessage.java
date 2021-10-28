@@ -1,9 +1,9 @@
 package com.brunch.passwordvalidator.core;
 
 public enum ErrorMessage {
-	EMPTY_INPUT("Password must not be empty."),
-	INVALID_LENGTH("Password must be between 5 and 12 characters in length."),
-	INVALID_LETTERS_AND_DIGITS("Password must consist of a mixture of lowercase letters and numerical digits only, with at least one of each."),
+	EMPTY_INPUT("Must not be empty."),
+	INVALID_LENGTH("Must be between %d and %d characters in length."),
+	INVALID_LETTERS_AND_DIGITS("Must consist of a mixture of lowercase letters and numerical digits only, with at least one of each."),
 	REPEATED_CHARACTERS_SEQUENCE("Must not contain any sequence of characters immediately followed by the same sequence.");
 	
 	String message;
@@ -14,5 +14,11 @@ public enum ErrorMessage {
 	
 	public String getMessage() {
 		return message;
+	}
+	
+	public static String getInvalidLength(int minLength, int maxLength) {
+		String invalidLength = INVALID_LENGTH.getMessage();
+		return String.format(invalidLength, minLength, maxLength);
+		
 	}
 }

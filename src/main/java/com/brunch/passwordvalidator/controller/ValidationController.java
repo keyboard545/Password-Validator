@@ -30,18 +30,23 @@ public class ValidationController {
 	@RequestMapping(path = "/password/{password}", method = RequestMethod.GET)
 	public ResponseEntity<Object> validatePassword(@PathVariable("password") String password) {
 		logger.info("Validate password");
-
+ 
+		String errorMsg = "";
 		ValidateVo vo = new ValidateVo();
-		vo.setPassword(password);
-		try { 
+		vo.setPassword(password); 
+		try {
 			if (null == password || password.isEmpty()) {
 				throw new InvalidPasswordException(ErrorMessage.EMPTY_INPUT);
 			}
 			validateService.executeValidation(ValidateType.VALIDATE_PASSWORD_ONLY, vo);
-		} catch (Exception ex) {
-			logger.error("Password verify failed.");
-			return new ResponseEntity<>("Password verify failed. Error message = [" + ex.getMessage() + "]",
-					HttpStatus.BAD_REQUEST);
+		} catch (InvalidPasswordException ex) {
+			errorMsg = "Password verify failed. Error message = [" + ex.getMessage() + "]";
+			logger.error(errorMsg);
+			return new ResponseEntity<>(errorMsg, HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			errorMsg = "Password verify failed. (Exception occurred) Error message = [" + e.getMessage() + "]";
+			logger.error(errorMsg);
+			return new ResponseEntity<>(errorMsg, HttpStatus.BAD_REQUEST);
 		}
 		logger.info("Password verified.");
 		return ResponseEntity.ok("Password verified.");

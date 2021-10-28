@@ -54,6 +54,13 @@ public class SequenceValidatorTest {
 				() -> validator.validate(new ValidateVo("11")), "Expected validate() to throw, but it didn't");
 		assertTrue(thrown.getMessage().contains(errorMessage));
 	}
+	
+	@Test
+	public void testImmediateRepeatDigitAndLetter() {
+		InvalidPasswordException thrown = assertThrows(InvalidPasswordException.class,
+				() -> validator.validate(new ValidateVo("1234566a")), "Expected validate() to throw, but it didn't");
+		assertTrue(thrown.getMessage().contains(errorMessage));
+	}
 
 	@Test
 	public void testNotImmediateRepeatDigit() {

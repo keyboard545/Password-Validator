@@ -28,12 +28,16 @@ public class PasswordvalidatorIntegrationTests {
 	@BeforeEach
 	public void setUp() throws Exception {
 		this.mvc = MockMvcBuilders.webAppContextSetup(this.wac).dispatchOptions(true).build();
-
 	}
 
 	@Test
-	public void testPassVerify() throws Exception {
+	public void testLettersDigitsPassVerify() throws Exception {
 		mvc.perform(get("/validate/password/abcde12345").contentType(MediaType.TEXT_PLAIN)).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void testDigitsLettersPassVerify() throws Exception {
+		mvc.perform(get("/validate/password/12345abcde").contentType(MediaType.TEXT_PLAIN)).andExpect(status().isOk());
 	}
 
 	@Test

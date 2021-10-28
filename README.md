@@ -17,7 +17,7 @@ to any number of password validation rules. The rules currently known are:
 
 # System requirements
 
-- Java/JDK 1.8
+- JDK 1.8
 - Maven 3.8.X
 
 # How to run
@@ -34,12 +34,12 @@ $> cd ./target
 $> java -jar ./passwordvalidator-1.0.0.jar
 ```
 3. The server will start listening on port 8080. Now we can start testing!
-4. Send a GET request to the URL below.
+4. Send a GET request to the URL below or just use browser to open the link.
 ```
 # You can change the string "password545" to the string you want to validate.
 curl -v GET http://localhost:8080/brunch/validate/password/password545
 ```
-5. After sending a GET request. It will return validate result. 
+5. After sending a GET request. It will return validation result. 
 ```
 # when success: Password verified.
 # when fail: Password verify failed. Error message = [Password must be between 5 and 12 characters in length.]
@@ -57,6 +57,6 @@ So if we have a new validation rule request, we just need to implement the `Vali
 1. Following the `SOLID` principles.
 2. Using Spring dependency injection annotations.
 3. A rest controller as client for password validation service.
-4. Unit test & Integration test in the project. When using `mvn clean install`, it will automatically running tests.
-5. Using slf4j for logs.
-
+4. Length validation are configurable in `application.properties` file. Default value for min length is 5 and max length is 12.
+5. Unit test & Integration test in the project. When using `mvn clean install`, it will automatically running tests.
+6. Using slf4j for logs.
