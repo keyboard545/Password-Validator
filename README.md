@@ -37,7 +37,7 @@ $> java -jar ./passwordvalidator-1.0.0.jar
 4. Send a GET request to the URL below or just use browser to open the link.
 ```
 # You can change the string "password545" to the string you want to validate.
-curl -v GET http://localhost:8080/brunch/validate/password/password545
+curl -v GET http://localhost:8080/brunch/validate/password/validation1
 ```
 5. After sending a GET request. It will return validation result. 
 ```
