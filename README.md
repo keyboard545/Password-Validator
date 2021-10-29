@@ -36,7 +36,7 @@ $> java -jar ./passwordvalidator-1.0.0.jar
 3. The server will start listening on port 8080. Now we can start testing!
 4. Send a GET request to the URL below or just use browser to open the link.
 ```
-# You can change the string "validate1" to the string you want to validate.
+# You can change the string "validation1" to the string you want to validate.
 curl -v GET http://localhost:8080/brunch/validate/password/validation1
 ```
 5. After sending a GET request. It will return validation result. 
